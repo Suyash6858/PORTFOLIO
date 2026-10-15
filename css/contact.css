@@ -1,0 +1,673 @@
+/* ==========================================================================
+   FUTURE OS // COMMAND CENTER CONTACT SECTION
+   Futuristic communication console with glassmorphism panels, glowing borders,
+   cyan/violet accents, interactive channel cards, and front-end mailto engine.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CONTACT SECTION HEADER
+   -------------------------------------------------------------------------- */
+.contact-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.14);
+  margin-bottom: 24px;
+}
+
+.contact-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.contact-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-title-group .section-heading-title {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.contact-sub-quote {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--violet-soft);
+  letter-spacing: 0.02em;
+  margin: 0;
+  opacity: 0.9;
+  max-width: 680px;
+  line-height: 1.5;
+}
+
+.contact-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.contact-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: rgba(14, 24, 52, 0.7);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: var(--cyan-bright);
+}
+
+.contact-meta-badge .badge-accent {
+  background: rgba(0, 240, 255, 0.18);
+  color: var(--cyan-primary);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+/* CONNECTION_READY System Status Indicator */
+.comm-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--cyan-bright);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  padding: 4px 10px;
+  border-radius: 5px;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+}
+
+.comm-status-badge .pulse-dot-cyan {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan-primary);
+  box-shadow: 0 0 8px var(--cyan-primary);
+  animation: pulseDotCyan 2s infinite;
+}
+
+@keyframes pulseDotCyan {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+/* --------------------------------------------------------------------------
+   COMMAND CENTER 2-COLUMN LAYOUT
+   -------------------------------------------------------------------------- */
+.contact-command-center {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Base Command Center Panel */
+.comm-panel {
+  background: rgba(11, 20, 44, 0.68);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(0, 240, 255, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-normal);
+}
+
+.comm-panel:hover {
+  border-color: rgba(0, 240, 255, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.68), 0 0 25px rgba(0, 240, 255, 0.12);
+}
+
+/* Corner Cyber Tech Brackets */
+.comm-panel .comm-bracket {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: rgba(0, 240, 255, 0.28);
+  pointer-events: none;
+}
+
+.comm-panel .comm-bracket.top-right {
+  top: 6px;
+  right: 6px;
+  border-top: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+.comm-panel .comm-bracket.bottom-left {
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+/* Panel Header */
+.comm-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  background: rgba(14, 24, 52, 0.65);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.comm-panel-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan-primary);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.comm-panel-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--violet-soft);
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.comm-panel-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT PANEL: CONTACT INFORMATION & DIRECT CHANNELS
+   -------------------------------------------------------------------------- */
+.contact-intro-card {
+  background: rgba(14, 24, 52, 0.5);
+  border: 1px solid rgba(0, 240, 255, 0.14);
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-intro-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.contact-intro-text {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Direct Channels List */
+.direct-channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.channel-card {
+  background: rgba(14, 24, 52, 0.55);
+  border: 1px solid rgba(0, 240, 255, 0.16);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.channel-card:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 240, 255, 0.14);
+}
+
+.channel-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.channel-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan-primary);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.channel-card:hover .channel-icon-wrap {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+/* Violet accent for GitHub & LinkedIn */
+.channel-card.channel-github .channel-icon-wrap,
+.channel-card.channel-linkedin .channel-icon-wrap {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.28);
+  color: var(--violet-soft);
+}
+
+.channel-card.channel-github:hover,
+.channel-card.channel-linkedin:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(167, 139, 250, 0.16);
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.channel-type {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.channel-val {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.channel-action-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--cyan-bright);
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.channel-card:hover .channel-action-chip {
+  background: rgba(0, 240, 255, 0.2);
+  border-color: var(--cyan-primary);
+}
+
+/* Copy Email Trigger Button */
+.channel-copy-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  margin-left: 4px;
+}
+
+.channel-copy-btn:hover {
+  color: var(--cyan-primary);
+  background: rgba(0, 240, 255, 0.15);
+}
+
+/* Security / Transmission Protocol Callout */
+.comm-protocol-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(14, 24, 52, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-top: auto;
+}
+
+.comm-protocol-icon {
+  color: var(--cyan-primary);
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.comm-protocol-text {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT PANEL: MESSAGE FORM CONSOLE
+   -------------------------------------------------------------------------- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+}
+
+.form-label .label-req {
+  color: var(--cyan-primary);
+}
+
+.form-input,
+.form-textarea {
+  background: rgba(14, 24, 52, 0.7);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #ffffff;
+  outline: none;
+  transition: all var(--transition-fast);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-input:hover,
+.form-textarea:hover {
+  border-color: rgba(0, 240, 255, 0.38);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--cyan-primary);
+  background: rgba(14, 24, 52, 0.85);
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.25), 0 0 16px rgba(0, 240, 255, 0.2);
+}
+
+.form-input.input-error,
+.form-textarea.input-error {
+  border-color: #f43f5e;
+  box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.25);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.55;
+}
+
+/* Inline Error Alert Box */
+.form-alert-box {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #fca5a5;
+  animation: alertFadeIn 0.3s ease;
+}
+
+.form-alert-box.visible {
+  display: flex;
+}
+
+@keyframes alertFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dispatch Success / Mail Client Trigger Notice Box */
+.form-dispatch-notice {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  border-radius: 8px;
+  padding: 12px 16px;
+  animation: alertFadeIn 0.3s ease;
+}
+
+.form-dispatch-notice.visible {
+  display: flex;
+}
+
+.dispatch-notice-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal-bright);
+  letter-spacing: 0.05em;
+}
+
+.dispatch-notice-text {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.dispatch-notice-link {
+  color: var(--cyan-bright);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: var(--font-mono);
+}
+
+/* Glowing Send Message Button */
+.contact-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 24px;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.22) 0%, rgba(139, 92, 246, 0.25) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.45);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-fast);
+  margin-top: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 240, 255, 0.15);
+}
+
+.contact-submit-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.35) 0%, rgba(139, 92, 246, 0.38) 100%);
+  border-color: var(--cyan-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 240, 255, 0.32);
+}
+
+.contact-submit-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.contact-submit-btn .btn-arrow {
+  transition: transform var(--transition-fast);
+}
+
+.contact-submit-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   CONTACT SECTION FOOTER STRIP
+   -------------------------------------------------------------------------- */
+.contact-footer-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 14px 20px;
+  background: rgba(9, 16, 36, 0.7);
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  border-radius: 10px;
+}
+
+.contact-footer-quote {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  color: #f1f5f9;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.contact-footer-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .contact-command-center {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-header-block {
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+  }
+
+  .contact-title-group .section-heading-title {
+    font-size: 22px;
+  }
+
+  .comm-panel-body {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .channel-card {
+    padding: 12px 14px;
+  }
+
+  .channel-val {
+    font-size: 12px;
+  }
+
+  .contact-submit-btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .form-row-2col {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-footer-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .comm-panel,
+  .channel-card,
+  .contact-submit-btn,
+  .comm-status-badge .pulse-dot-cyan {
+    animation: none !important;
+    transition: none !important;
+  }
+}

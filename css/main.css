@@ -1,0 +1,207 @@
+/* ==========================================================================
+   FUTURE OS // DESIGN SYSTEM & TOKENS
+   Theme: Sophisticated Multi-Colour Futuristic Palette
+   - Deep midnight navy & charcoal base
+   - Electric-blue & cyan primary highlights
+   - Soft violet & indigo secondary accents
+   - Subtle teal for selected states & success indicators
+   - Crisp white & cool grey for readable text
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Background Palette (Deep Midnight Navy & Charcoal) */
+  --bg-darkest: #03050c;
+  --bg-charcoal: #050814;
+  --bg-midnight: #070d1e;
+  --bg-navy: #0b142c;
+  --bg-navy-card: rgba(11, 20, 44, 0.68);
+  --bg-surface: rgba(14, 24, 52, 0.72);
+  --bg-surface-elevated: rgba(18, 30, 66, 0.82);
+  --bg-surface-hover: rgba(28, 45, 96, 0.65);
+  --bg-glass-card: rgba(9, 16, 36, 0.62);
+
+  /* Primary Highlights (Electric Blue & Cyan) */
+  --cyan-primary: #00f0ff;
+  --cyan-bright: #38f4ff;
+  --cyan-dim: rgba(0, 240, 255, 0.16);
+  --cyan-glow: rgba(0, 240, 255, 0.35);
+  --blue-electric: #0070f3;
+  --blue-neon: #3b82f6;
+  --blue-deep: #0a2540;
+  --blue-glow: rgba(0, 112, 243, 0.35);
+
+  /* Secondary Accents (Soft Violet & Indigo) */
+  --violet-soft: #a78bfa;
+  --violet-primary: #8b5cf6;
+  --violet-bright: #c084fc;
+  --violet-glow: rgba(139, 92, 246, 0.3);
+  --violet-dim: rgba(139, 92, 246, 0.14);
+  --indigo-accent: #6366f1;
+  --indigo-deep: #4f46e5;
+  --indigo-glow: rgba(99, 102, 241, 0.25);
+  --indigo-dim: rgba(99, 102, 241, 0.12);
+
+  /* Subtle Teal (Selected States & Success Indicators) */
+  --teal-accent: #14b8a6;
+  --teal-bright: #2dd4bf;
+  --teal-dim: rgba(20, 184, 166, 0.16);
+  --teal-glow: rgba(20, 184, 166, 0.35);
+
+  /* Status Colors */
+  --status-online: #10b981;
+  --status-warning: #f59e0b;
+  --status-alert: #f43f5e;
+  --status-minimized: #a78bfa;
+
+  /* Readable Text & Cool Grey Palette */
+  --text-white: #ffffff;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Multi-Colour Gradients */
+  --gradient-primary: linear-gradient(135deg, #00f0ff 0%, #0070f3 50%, #8b5cf6 100%);
+  --gradient-accent: linear-gradient(135deg, #0070f3 0%, #6366f1 50%, #a78bfa 100%);
+  --gradient-hero-title: linear-gradient(135deg, #ffffff 0%, #e2e8f0 45%, #38f4ff 80%, #a78bfa 100%);
+  --gradient-tagline: linear-gradient(90deg, #38f4ff 0%, #818cf8 50%, #c084fc 100%);
+  --gradient-glass-border: linear-gradient(135deg, rgba(0, 240, 255, 0.35) 0%, rgba(99, 102, 241, 0.2) 50%, rgba(167, 139, 250, 0.35) 100%);
+  --gradient-badge: linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(139, 92, 246, 0.08) 100%);
+
+  /* Glassmorphism */
+  --glass-blur: blur(20px) saturate(180%);
+  --glass-blur-sm: blur(12px) saturate(160%);
+  --border-subtle: 1px solid rgba(0, 240, 255, 0.14);
+  --border-active: 1px solid rgba(0, 240, 255, 0.45);
+  --border-violet: 1px solid rgba(139, 92, 246, 0.3);
+  --border-glass: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* Sophisticated Multi-Colour Shadows */
+  --shadow-window: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 1px 1px rgba(99, 102, 241, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --shadow-window-focused: 0 30px 80px rgba(0, 0, 0, 0.92), 0 0 25px rgba(0, 240, 255, 0.25), 0 0 18px rgba(139, 92, 246, 0.2), 0 0 1px 1px rgba(0, 240, 255, 0.45);
+  --shadow-dock: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(99, 102, 241, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --shadow-glow: 0 0 25px rgba(0, 240, 255, 0.35);
+  --shadow-glow-violet: 0 0 25px rgba(139, 92, 246, 0.35);
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Heights */
+  --topbar-height: 42px;
+  --dock-height: 72px;
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-darkest);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+}
+
+/* Custom Cyber Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(3, 5, 12, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.22);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.45);
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-white);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.text-cyan {
+  color: var(--cyan-primary);
+}
+
+.text-violet {
+  color: var(--violet-soft);
+}
+
+.text-teal {
+  color: var(--teal-bright);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Sophisticated Cyber Badges */
+.cyber-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  color: var(--cyan-primary);
+}
+
+.cyber-badge.badge-violet {
+  background: var(--violet-dim);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: var(--violet-soft);
+}
+
+.cyber-badge.status-green {
+  background: rgba(16, 185, 129, 0.09);
+  border-color: rgba(16, 185, 129, 0.32);
+  color: var(--status-online);
+}
+
+.cyber-badge.status-teal {
+  background: var(--teal-dim);
+  border-color: rgba(20, 184, 166, 0.35);
+  color: var(--teal-bright);
+}
+
+/* Selection */
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+  color: #ffffff;
+}

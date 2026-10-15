@@ -1,0 +1,262 @@
+/* ==========================================================================
+   FUTURE OS // MOBILE & TABLET RESPONSIVE SYSTEM
+   - Fullscreen sheet windows on mobile
+   - Two-column hero landing page stacking vertically
+   - Responsive dock and status bar
+   ========================================================================== */
+
+@media screen and (max-width: 960px) {
+  .hero-content-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .hero-left-col {
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-heading {
+    align-items: center;
+    font-size: 38px;
+  }
+
+  .hero-tagline {
+    font-size: 20px;
+  }
+
+  .hero-intro-box {
+    text-align: left;
+    max-width: 580px;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-social-links {
+    justify-content: center;
+  }
+
+  .hero-right-col {
+    order: -1; /* Show profile photo above heading on tablets/mobile */
+  }
+
+  .hero-photo-wrapper {
+    max-width: 280px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --topbar-height: 46px;
+    --dock-height: 62px;
+  }
+
+  /* Status Bar Adaptation */
+  #top-bar {
+    padding: 0 12px;
+  }
+
+  .active-window-pill {
+    display: none !important;
+  }
+
+  .os-brand {
+    gap: 6px;
+    padding: 4px 6px;
+  }
+
+  .os-title {
+    font-size: 12px;
+  }
+
+  .quick-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  #cmd-palette-btn span.cmd-shortcut {
+    display: none;
+  }
+
+  .clock-display {
+    font-size: 11px;
+    gap: 4px;
+    padding-left: 6px;
+  }
+
+  .date-text {
+    display: none;
+  }
+
+  /* Workspace on Mobile */
+  #workspace {
+    padding: 16px 16px calc(var(--dock-height) + 20px);
+    align-items: flex-start;
+  }
+
+  .hero-landing-section {
+    padding: 10px 0 20px;
+  }
+
+  .hero-content-container {
+    gap: 24px;
+  }
+
+  .hero-heading {
+    font-size: 30px;
+  }
+
+  .hero-greeting {
+    font-size: 22px;
+  }
+
+  .hero-tagline {
+    font-size: 17px;
+  }
+
+  .hero-intro-box {
+    padding: 14px 16px;
+  }
+
+  .hero-intro-text {
+    font-size: 13px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    gap: 12px;
+  }
+
+  .hero-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 13px;
+  }
+
+  .hero-photo-wrapper {
+    max-width: 220px;
+  }
+
+  .photo-glow-cyan {
+    width: 160px;
+    height: 160px;
+  }
+
+  .photo-glow-violet {
+    width: 170px;
+    height: 170px;
+  }
+
+  /* Fullscreen Modal Windows on Mobile */
+  .os-window {
+    position: fixed !important;
+    top: var(--topbar-height) !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - var(--topbar-height) - var(--dock-height) - 8px) !important;
+    border-radius: 16px 16px 0 0 !important;
+    border: none !important;
+    border-top: 1px solid rgba(0, 240, 255, 0.3) !important;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.95) !important;
+  }
+
+  .window-header {
+    height: 46px;
+    cursor: default;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .win-minimize, .win-maximize {
+    display: none;
+  }
+
+  .win-btn {
+    width: 22px;
+    height: 22px;
+  }
+
+  .win-btn svg {
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+  }
+
+  .resize-handle {
+    display: none !important;
+  }
+
+  .window-body {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .section-heading-title {
+    font-size: 20px;
+  }
+
+  .placeholder-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .placeholder-card {
+    min-height: 120px;
+    padding: 16px;
+  }
+
+  /* Floating Dock on Mobile */
+  #dock-container {
+    bottom: 8px;
+    width: 96%;
+  }
+
+  #dock {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 6px 10px;
+    gap: 6px;
+    border-radius: 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  #dock::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dock-item {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 10px;
+  }
+
+  .dock-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dock-tooltip {
+    display: none !important;
+  }
+
+  /* Command Palette on Mobile */
+  #palette-overlay {
+    padding-top: 5vh;
+  }
+
+  #command-palette {
+    width: 95%;
+  }
+
+  .palette-footer {
+    display: none;
+  }
+}

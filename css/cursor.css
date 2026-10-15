@@ -1,0 +1,139 @@
+/* ==========================================================================
+   FUTURE OS // OPTIMIZED LIQUID BLOB CUSTOM CURSOR
+   A living, fluid digital object in a futuristic operating system:
+   - Dynamic multi-colour gradient: electric blue, cyan, violet, and subtle teal
+   - GPU-accelerated transforms (no layout width/height transitions)
+   - Translucent glassmorphism with soft highlight and restrained outer glow
+   - Organic morphing border-radius
+   - Pointer events strictly disabled to never block clicks or window controls
+   ========================================================================== */
+
+/* Hide default cursor on fine pointer devices */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
+/* Cursor container */
+#cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none !important;
+  z-index: 9999999;
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+
+#cursor-container.hidden {
+  opacity: 0;
+}
+
+/* Fluid Liquid Outer Blob */
+#cursor-blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  pointer-events: none !important;
+  transform: translate(-50%, -50%);
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.9) 0%, rgba(56, 244, 255, 0.75) 25%, rgba(0, 112, 243, 0.6) 50%, rgba(139, 92, 246, 0.65) 75%, rgba(20, 184, 166, 0.5) 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.45), 0 0 24px rgba(139, 92, 246, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  animation: blob-organic-morph 7s ease-in-out infinite alternate;
+  will-change: transform, border-radius;
+}
+
+/* Agile Center Droplet Dot (Precise Pointer Target) */
+#cursor-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  pointer-events: none !important;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px #00f0ff, 0 0 14px rgba(167, 139, 250, 0.8);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  will-change: transform;
+}
+
+/* Organic Morphing Keyframes (Optimized border-radius keyframes) */
+@keyframes blob-organic-morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  33% {
+    border-radius: 46% 54% 62% 38% / 44% 60% 40% 56%;
+  }
+  66% {
+    border-radius: 56% 44% 38% 62% / 36% 46% 54% 64%;
+  }
+  100% {
+    border-radius: 44% 56% 58% 42% / 54% 40% 60% 46%;
+  }
+}
+
+/* Hover State: Enhanced liquid glow & scaled center dot */
+#cursor-container.hover #cursor-blob {
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.95) 0%, rgba(56, 244, 255, 0.85) 25%, rgba(0, 112, 243, 0.65) 55%, rgba(139, 92, 246, 0.75) 75%, rgba(20, 184, 166, 0.6) 100%);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 32px rgba(139, 92, 246, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 240, 255, 0.65);
+}
+
+#cursor-container.hover #cursor-dot {
+  transform: translate(-50%, -50%) scale(1.4);
+  box-shadow: 0 0 10px #38f4ff, 0 0 18px #8b5cf6;
+}
+
+/* Active / Click State: Elastic Squish */
+#cursor-container.active #cursor-blob {
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 18px rgba(139, 92, 246, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  filter: brightness(1.2);
+}
+
+#cursor-container.active #cursor-dot {
+  transform: translate(-50%, -50%) scale(0.65);
+}
+
+/* Text Input State: Sleek Vertical Liquid Pill */
+#cursor-container.text-mode #cursor-blob {
+  width: 6px;
+  height: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.75), 0 0 18px rgba(139, 92, 246, 0.45);
+  animation: none;
+}
+
+#cursor-container.text-mode #cursor-dot {
+  opacity: 0;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  #cursor-container {
+    display: none !important;
+  }
+  *, *::before, *::after {
+    cursor: auto !important;
+  }
+}
+
+/* Disable entirely on touch / mobile devices */
+@media (pointer: coarse), (max-width: 768px) {
+  #cursor-container {
+    display: none !important;
+  }
+  *, *::before, *::after {
+    cursor: auto !important;
+  }
+}

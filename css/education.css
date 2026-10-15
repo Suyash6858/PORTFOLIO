@@ -1,0 +1,614 @@
+/* ==========================================================================
+   FUTURE OS // EDUCATION TIMELINE (OS EDUCATION TIMELINE)
+   Sophisticated futuristic vertical academic timeline with glassmorphic cards,
+   glowing spine, cyan/violet accents, and restrained hover effects.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   EDUCATION SECTION HEADER
+   -------------------------------------------------------------------------- */
+.education-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.14);
+  margin-bottom: 24px;
+}
+
+.education-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.education-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.education-title-group .section-heading-title {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.education-sub-quote {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--violet-soft);
+  letter-spacing: 0.03em;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.education-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: rgba(14, 24, 52, 0.7);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: var(--cyan-bright);
+}
+
+.education-meta-badge .badge-accent {
+  background: rgba(0, 240, 255, 0.18);
+  color: var(--cyan-primary);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   TIMELINE WRAPPER & GLOWING SPINE
+   -------------------------------------------------------------------------- */
+.education-timeline-container {
+  position: relative;
+  padding: 10px 0 20px 0;
+}
+
+/* Vertical glowing cyan spine */
+.education-timeline-spine {
+  position: absolute;
+  top: 15px;
+  bottom: 20px;
+  left: 30px;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--cyan-primary) 0%,
+    rgba(0, 240, 255, 0.6) 45%,
+    rgba(167, 139, 250, 0.5) 80%,
+    rgba(167, 139, 250, 0.1) 100%
+  );
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   TIMELINE MILESTONE ITEM
+   -------------------------------------------------------------------------- */
+.timeline-item {
+  position: relative;
+  padding-left: 76px;
+  margin-bottom: 28px;
+  transition: transform var(--transition-normal);
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Milestone Marker on Timeline Spine */
+.timeline-marker {
+  position: absolute;
+  top: 24px;
+  left: 21px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg-charcoal);
+  border: 2px solid var(--cyan-primary);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all var(--transition-fast);
+}
+
+.timeline-marker-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan-bright);
+}
+
+/* Active / Pursuing Pulsing Marker */
+.timeline-marker.marker-active {
+  border-color: var(--cyan-bright);
+  box-shadow: 0 0 16px var(--cyan-primary);
+  animation: markerPulse 2.4s ease-in-out infinite;
+}
+
+.timeline-marker.marker-active .timeline-marker-core {
+  background: #ffffff;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+@keyframes markerPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.8), 0 0 30px rgba(0, 240, 255, 0.3);
+    transform: scale(1.12);
+  }
+}
+
+/* Violet markers for earlier milestones */
+.timeline-marker.marker-violet {
+  border-color: var(--violet-soft);
+  box-shadow: 0 0 10px rgba(167, 139, 250, 0.35);
+}
+
+.timeline-marker.marker-violet .timeline-marker-core {
+  background: var(--violet-soft);
+}
+
+/* --------------------------------------------------------------------------
+   GLASSMORPHISM ACADEMIC CARDS
+   -------------------------------------------------------------------------- */
+.edu-card {
+  background: rgba(11, 20, 44, 0.68);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(0, 240, 255, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal), border-color var(--transition-fast), box-shadow var(--transition-normal);
+}
+
+.edu-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Corner Cyber Tech Brackets */
+.edu-card .edu-bracket {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: rgba(0, 240, 255, 0.28);
+  pointer-events: none;
+}
+
+.edu-card .edu-bracket.top-right {
+  top: 6px;
+  right: 6px;
+  border-top: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+.edu-card .edu-bracket.bottom-left {
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+/* Restrained Scanline on Hover */
+.edu-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 240, 255, 0.03) 40%,
+    rgba(0, 240, 255, 0.08) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transform: skewX(-20deg);
+  transition: opacity 0.3s ease;
+}
+
+.edu-card:hover::after {
+  opacity: 1;
+  animation: eduScanline 1.8s ease-in-out infinite;
+}
+
+@keyframes eduScanline {
+  0% { left: -120%; }
+  100% { left: 180%; }
+}
+
+/* --------------------------------------------------------------------------
+   CARD 1 — UNIVERSITY (VISUALLY DOMINANT)
+   -------------------------------------------------------------------------- */
+.edu-card-university {
+  border-color: rgba(0, 240, 255, 0.32);
+  border-left: 4px solid var(--cyan-primary);
+  background: linear-gradient(135deg, rgba(14, 24, 52, 0.8) 0%, rgba(9, 16, 36, 0.72) 100%);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 240, 255, 0.12);
+}
+
+.edu-card-university:hover {
+  border-color: rgba(0, 240, 255, 0.55);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 240, 255, 0.22);
+}
+
+/* --------------------------------------------------------------------------
+   CARDS 2 & 3 — SCHOOL (MORE UNDERSTATED, VIOLET ACCENTS)
+   -------------------------------------------------------------------------- */
+.edu-card-school {
+  border-color: rgba(167, 139, 250, 0.2);
+  border-left: 4px solid var(--violet-soft);
+  background: rgba(11, 20, 44, 0.62);
+}
+
+.edu-card-school:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.68), 0 0 22px rgba(167, 139, 250, 0.16);
+}
+
+/* --------------------------------------------------------------------------
+   CARD HEADER
+   -------------------------------------------------------------------------- */
+.edu-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  background: rgba(14, 24, 52, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.edu-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.edu-icon-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan-primary);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.edu-card-school .edu-icon-badge {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.28);
+  color: var(--violet-soft);
+}
+
+.edu-card:hover .edu-icon-badge {
+  transform: scale(1.06);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+}
+
+.edu-card-school:hover .edu-icon-badge {
+  box-shadow: 0 0 14px rgba(167, 139, 250, 0.25);
+}
+
+.edu-heading-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.edu-card-title {
+  font-family: var(--font-display);
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.edu-card-university .edu-card-title {
+  font-size: 18px;
+}
+
+.edu-card-sublabel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--cyan-primary);
+  letter-spacing: 0.05em;
+}
+
+.edu-card-school .edu-card-sublabel {
+  color: var(--violet-soft);
+}
+
+.edu-card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Year Badge */
+.edu-year-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cyan-bright);
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 3px 10px;
+  border-radius: 5px;
+  letter-spacing: 0.06em;
+}
+
+.edu-card-school .edu-year-badge {
+  color: var(--violet-soft);
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.25);
+}
+
+/* Status: CURRENTLY PURSUING */
+.status-pursuing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: #2dd4bf;
+  background: rgba(20, 184, 166, 0.14);
+  border: 1px solid rgba(20, 184, 166, 0.4);
+  padding: 3px 10px;
+  border-radius: 5px;
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 10px rgba(20, 184, 166, 0.2);
+}
+
+.status-pursuing-pill .pulse-dot-cyan {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  box-shadow: 0 0 8px #2dd4bf;
+  animation: pulseDotSmall 1.8s infinite;
+}
+
+@keyframes pulseDotSmall {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Status: COMPLETED */
+.status-completed-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  padding: 3px 8px;
+  border-radius: 5px;
+  letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------------------
+   CARD BODY & ACADEMIC DATA METRICS
+   -------------------------------------------------------------------------- */
+.edu-card-body {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Specialisation Banner (for University) */
+.edu-specialisation-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.18);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.edu-spec-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--cyan-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edu-spec-value {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+
+/* Structured Academic Metadata Grid */
+.edu-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.edu-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: rgba(14, 24, 52, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 7px;
+  padding: 10px 14px;
+}
+
+.edu-item-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.edu-item-val {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: #f1f5f9;
+}
+
+.edu-item-val.highlight-text {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   CARD FOOTER TELEMETRY STRIP
+   -------------------------------------------------------------------------- */
+.edu-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 20px;
+  background: rgba(9, 16, 36, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.edu-card-footer .footer-node {
+  color: var(--text-dim);
+}
+
+.edu-card-footer .footer-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #10b981;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE LAYOUT (TABLET & MOBILE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .timeline-item {
+    padding-left: 58px;
+    margin-bottom: 22px;
+  }
+
+  .education-timeline-spine {
+    left: 20px;
+  }
+
+  .timeline-marker {
+    left: 11px;
+    width: 18px;
+    height: 18px;
+    top: 20px;
+  }
+
+  .timeline-marker-core {
+    width: 7px;
+    height: 7px;
+  }
+
+  .edu-card-header {
+    padding: 12px 16px;
+  }
+
+  .edu-card-body {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .edu-card-title {
+    font-size: 15px;
+  }
+
+  .edu-card-university .edu-card-title {
+    font-size: 16px;
+  }
+
+  .edu-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .education-header-block {
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+  }
+
+  .education-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .education-title-group .section-heading-title {
+    font-size: 22px;
+  }
+
+  .edu-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .edu-card-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .edu-card,
+  .timeline-marker,
+  .edu-card::after,
+  .status-pursuing-pill .pulse-dot-cyan {
+    animation: none !important;
+    transition: none !important;
+  }
+}

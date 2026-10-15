@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NEXUS // OS — Future Portfolio</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/desktop.css">
+  <link rel="stylesheet" href="css/window.css">
+  <link rel="stylesheet" href="css/dock.css">
+  <link rel="stylesheet" href="css/palette.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/cursor.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/skills.css">
+  <link rel="stylesheet" href="css/education.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+  <!-- SVG Icon Sprite Definitions -->
+  <svg style="display: none;">
+    <!-- OS Logo -->
+    <symbol id="icon-os-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+      <polyline points="2 17 12 22 22 17"></polyline>
+      <polyline points="2 12 12 17 22 12"></polyline>
+    </symbol>
+
+    <!-- 01 // Home -->
+    <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+    </symbol>
+
+    <!-- 02 // About Me -->
+    <symbol id="icon-about" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </symbol>
+
+    <!-- 03 // Projects -->
+    <symbol id="icon-projects" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+      <line x1="8" y1="21" x2="16" y2="21"></line>
+      <line x1="12" y1="17" x2="12" y2="21"></line>
+    </symbol>
+
+    <!-- 04 // Skills -->
+    <symbol id="icon-skills" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+      <rect x="9" y="9" width="6" height="6"></rect>
+      <line x1="9" y1="1" x2="9" y2="4"></line>
+      <line x1="15" y1="1" x2="15" y2="4"></line>
+      <line x1="9" y1="20" x2="9" y2="23"></line>
+      <line x1="15" y1="20" x2="15" y2="23"></line>
+      <line x1="20" y1="9" x2="23" y2="9"></line>
+      <line x1="20" y1="14" x2="23" y2="14"></line>
+      <line x1="1" y1="9" x2="4" y2="9"></line>
+      <line x1="1" y1="14" x2="4" y2="14"></line>
+    </symbol>
+
+    <!-- 05 // Education -->
+    <symbol id="icon-education" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+    </symbol>
+
+    <!-- 06 // Contact -->
+    <symbol id="icon-contact" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </symbol>
+  </svg>
+
+  <div id="desktop-container">
+    <!-- Interactive Cybernetic Background Canvas -->
+    <canvas id="canvas-bg"></canvas>
+    <div class="ambient-glow"></div>
+
+    <!-- --------------------------------------------------------------------
+         TOP STATUS BAR
+         -------------------------------------------------------------------- -->
+    <header id="top-bar">
+      <!-- Left: OS Branding & Active Window Status -->
+      <div class="top-bar-left">
+        <div class="os-brand" id="brand-trigger" title="Suyash Agrawal — Click to return to Home">
+          <svg class="os-logo-icon"><use href="#icon-os-logo"></use></svg>
+          <span class="os-title">SUYASH <span class="os-title-accent">AG.</span></span>
+          <span class="os-version-tag">PORTFOLIO</span>
+        </div>
+
+        <div class="active-window-pill">
+          <span class="pulse-dot"></span>
+          <span id="active-window-name">HOME</span>
+        </div>
+      </div>
+
+      <!-- Right: System Controls, Audio, Command Palette, Clock -->
+      <div class="top-bar-right">
+        <button class="quick-btn" id="audio-toggle-btn" title="Toggle Synthesized Audio Feedback">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <span>AUDIO: ON</span>
+        </button>
+
+        <button class="quick-btn btn-violet" id="cmd-palette-btn" title="Open Command Palette (Ctrl+K)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>PALETTE</span>
+          <span class="cmd-shortcut">Ctrl+K</span>
+        </button>
+
+        <button class="quick-btn" id="fullscreen-btn" title="Toggle Fullscreen">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+          </svg>
+        </button>
+
+        <div class="clock-display">
+          <span id="top-clock">00:00:00</span>
+          <span id="top-date" class="date-text">OCT 14 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- --------------------------------------------------------------------
+         DESKTOP WORKSPACE & HOME HERO LANDING PAGE
+         -------------------------------------------------------------------- -->
+    <main id="workspace">
+      <!-- 00 // HERO LANDING SECTION (DEFAULT VISIBLE HOME PAGE) -->
+      <section id="hero-landing" class="hero-landing-section" aria-label="Portfolio Home Introduction">
+        <div class="hero-content-container">
+
+          <!-- Left Column: Introduction & Primary CTAs -->
+          <div class="hero-left-col">
+            <!-- Status Badge -->
+            <div class="hero-badge">
+              <span class="pulse-dot"></span>
+              <span class="hero-badge-text">SYSTEM ONLINE // PORTFOLIO INITIALIZED</span>
+            </div>
+
+            <!-- Large Heading -->
+            <h1 class="hero-heading">
+              <span class="hero-greeting">Hi, I'm</span>
+              <span class="hero-name">Suyash Agrawal.</span>
+            </h1>
+
+            <!-- Prominent Professional Tagline -->
+            <div class="hero-tagline-wrapper">
+              <h2 class="hero-tagline">Beyond Code. Into Intelligence.</h2>
+            </div>
+
+            <!-- Short Introduction -->
+            <div class="hero-intro-box">
+              <p class="hero-intro-text">
+                B.Tech student in Artificial Intelligence &amp; Data Science at JECRC University. Passionate about exploring AI, software development, and building intelligent interactive systems.
+              </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hero-cta-group">
+              <button class="hero-btn hero-btn-primary" id="hero-btn-explore" title="Open Projects Window">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span>Explore My Work</span>
+                <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+
+              <button class="hero-btn hero-btn-secondary" id="hero-btn-contact" title="Open Contact Window">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>Contact Me</span>
+              </button>
+            </div>
+
+            <!-- Optional Social Media Icon Placeholders -->
+            <div class="hero-social-links">
+              <span class="social-label">CHANNELS //</span>
+              <a href="#" class="social-icon-btn" title="GitHub Profile Placeholder" onclick="event.preventDefault();">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>GITHUB</span>
+              </a>
+              <a href="#" class="social-icon-btn" title="LinkedIn Profile Placeholder" onclick="event.preventDefault();">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <span>LINKEDIN</span>
+              </a>
+              <a href="#" class="social-icon-btn" title="Direct Email Transmission" onclick="event.preventDefault();">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>COMM</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Profile Photo Placeholder with Spatial Depth -->
+          <div class="hero-right-col">
+            <div class="hero-photo-wrapper" id="hero-photo-wrapper">
+              <!-- Spatial Multi-Layer Glow Orbs behind photo -->
+              <div class="photo-glow-layer photo-glow-cyan"></div>
+              <div class="photo-glow-layer photo-glow-violet"></div>
+
+              <!-- Holographic Energy Pulse Emitter (Rings & Dispersing Particles) -->
+              <div class="hologram-pulse-emitter" id="hologram-pulse-emitter" aria-hidden="true">
+                <div class="holo-ring holo-ring-1"></div>
+                <div class="holo-ring holo-ring-2"></div>
+                <div class="holo-ring holo-ring-3"></div>
+                <div class="holo-particle hp-1"></div>
+                <div class="holo-particle hp-2"></div>
+                <div class="holo-particle hp-3"></div>
+                <div class="holo-particle hp-4"></div>
+                <div class="holo-particle hp-5"></div>
+                <div class="holo-particle hp-6"></div>
+                <div class="holo-particle hp-7"></div>
+                <div class="holo-particle hp-8"></div>
+              </div>
+
+              <!-- Interactive Card Frame -->
+              <div class="hero-photo-card" id="hero-photo-frame" role="button" tabindex="0" title="Click to activate Holographic Energy Pulse" aria-label="Activate Profile Holographic Energy Pulse">
+                <div class="photo-frame-header">
+                  <span class="photo-tag">BIOMETRIC // ID: 001</span>
+                  <div class="photo-dots">
+                    <span class="dot-cyan"></span>
+                    <span class="dot-violet"></span>
+                  </div>
+                </div>
+
+                <!-- Photo Viewport -->
+                <div class="photo-viewport">
+                  <img src="images/profile.jpg" alt="Suyash Agrawal" class="hero-photo-img" id="hero-profile-img">
+                  <!-- Holographic Reflective Highlight / Sheen -->
+                  <div class="photo-holo-sheen" aria-hidden="true"></div>
+                  <!-- Central Pulse Flash Overlay -->
+                  <div class="photo-pulse-flash" aria-hidden="true"></div>
+                  <!-- Futuristic Corner Brackets -->
+                  <div class="corner-bracket top-left"></div>
+                  <div class="corner-bracket top-right"></div>
+                  <div class="corner-bracket bottom-left"></div>
+                  <div class="corner-bracket bottom-right"></div>
+                </div>
+
+                <div class="photo-frame-footer">
+                  <span class="status-indicator-pill"><span class="pulse-dot"></span> IDENTITY VERIFIED</span>
+                  <span class="photo-coords">NODE: NEXUS-HUD // ONLINE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           APPLICATION WINDOWS (HEADINGS, SUBNAV, AND EMPTY INTERFACE PLACEHOLDERS)
+           ================================================================== -->
+
+      <!-- 2. ABOUT ME WINDOW (PERSONAL OS DASHBOARD) -->
+      <section class="os-window" id="win-about" data-window-id="about">
+        <div class="window-header">
+          <div class="window-header-left">
+            <svg class="window-icon"><use href="#icon-about"></use></svg>
+            <div class="window-title-group">
+              <span class="window-title">About Me</span>
+              <span class="window-node-id">NODE_02 // PERSONAL_DASHBOARD</span>
+            </div>
+          </div>
+          <div class="window-controls">
+            <button class="win-btn win-minimize" title="Minimize">
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button class="win-btn win-maximize" title="Maximize">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+            </button>
+            <button class="win-btn win-close" title="Close">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dashboard Sub-Navigation & Telemetry Bar -->
+        <div class="window-subnav">
+          <div class="subnav-tabs" role="tablist">
+            <button class="subnav-tab active" data-dash-tab="all" role="tab">All Systems</button>
+            <button class="subnav-tab" data-dash-tab="identity" role="tab">Identity</button>
+            <button class="subnav-tab" data-dash-tab="story" role="tab">My Story</button>
+            <button class="subnav-tab" data-dash-tab="pillars" role="tab">Core Pillars</button>
+          </div>
+          <div class="subnav-status">
+            <span class="cyber-badge status-green"><span class="pulse-dot"></span> IDENTITY VERIFIED // OPERATIONAL</span>
+          </div>
+        </div>
+
+        <div class="window-body dash-body">
+          <!-- Section Banner -->
+          <div class="section-header-block dash-header-block">
+            <div class="section-tagline">
+              <span>SYSTEM PROFILE // BIOMETRIC NODE 02</span>
+              <span class="tagline-dot"></span>
+              <span>AI &amp; DATA SCIENCE</span>
+            </div>
+            <div class="dash-title-row">
+              <h1 class="section-heading-title"><span class="section-index">02.</span> About Me <span class="dash-sub-title">// Personal OS Dashboard</span></h1>
+              <div class="dash-meta-badge">
+                <span class="badge-accent">SYS_ID</span>
+                <span>SA-9204-AI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Row: Identity Card & Story Card (2 Columns) -->
+          <div class="dash-grid-top">
+
+            <!-- MODULE A: Identity Card -->
+            <div class="dash-card dash-identity-card" data-dash-module="identity">
+              <div class="dash-card-header">
+                <div class="card-header-tag">
+                  <span class="pulse-dot"></span>
+                  <span>BIOMETRIC IDENTITY</span>
+                </div>
+                <span class="card-id-pill">ID_CARD // VERIFIED</span>
+              </div>
+
+              <div class="identity-card-content">
+                <!-- Avatar / Photo Frame -->
+                <div class="identity-avatar-wrapper">
+                  <div class="identity-avatar-frame">
+                    <img src="images/profile.jpg" alt="Suyash Agrawal" class="identity-avatar-img">
+                    <div class="avatar-glow"></div>
+                    <div class="corner-bracket top-left"></div>
+                    <div class="corner-bracket top-right"></div>
+                    <div class="corner-bracket bottom-left"></div>
+                    <div class="corner-bracket bottom-right"></div>
+                  </div>
+                  <div class="identity-status-tag">
+                    <span class="pulse-dot"></span>
+                    <span>ONLINE // ACTIVE</span>
+                  </div>
+                </div>
+
+                <!-- Identity Details -->
+                <div class="identity-meta-group">
+                  <h2 class="identity-name">Suyash Agrawal</h2>
+                  <div class="identity-role-badge">
+                    <span>AI &amp; Emerging Tech Explorer</span>
+                  </div>
+
+                  <div class="identity-specs-list">
+                    <div class="identity-spec-item">
+                      <span class="spec-label">DEGREE</span>
+                      <span class="spec-val">B.Tech in Artificial Intelligence &amp; Data Science</span>
+                    </div>
+                    <div class="identity-spec-item">
+                      <span class="spec-label">INSTITUTION</span>
+                      <span class="spec-val highlight-val">JECRC University</span>
+                    </div>
+                    <div class="identity-spec-item">
+                      <span class="spec-label">LOCATION</span>
+                      <span class="spec-val">Jaipur, Rajasthan, India</span>
+                    </div>
+                    <div class="identity-spec-item">
+                      <span class="spec-label">FOCUS DOMAIN</span>
+                      <span class="spec-val">Machine Intelligence &amp; Web Architectures</span>
+                    </div>
+                  </div>
+
+                  <!-- Quick Skill Pills -->
+                  <div class="identity-tags-wrapper">
+                    <span class="id-tag tag-cyan">AI &amp; Machine Learning</span>
+                    <span class="id-tag tag-violet">Data Science</span>
+                    <span class="id-tag tag-blue">Web Systems</span>
+                    <span class="id-tag tag-teal">Algorithmic Logic</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MODULE B: About Me / My Story -->
+            <div class="dash-card dash-story-card" data-dash-module="story">
+              <div class="dash-card-header">
+                <div class="card-header-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  <span>MISSION &amp; BACKGROUND // THE NARRATIVE</span>
+                </div>
+                <span class="card-id-pill">NODE_02 // BIO</span>
+              </div>
+
+              <div class="story-content">
+                <!-- Verified Introduction Paragraph -->
+                <div class="story-lead-box">
+                  <p class="story-lead-text">
+                    I'm Suyash Agrawal, a B.Tech student in Artificial Intelligence and Data Science at JECRC University. I'm passionate about exploring AI, software development, and emerging technologies to turn creative ideas into practical solutions. From building intelligent systems to developing interactive web applications, I enjoy experimenting, solving problems, and learning by creating. I'm constantly looking for new challenges that push my skills further and help me build technology that makes a difference.
+                  </p>
+                </div>
+
+                <!-- Secondary Narrative Paragraph -->
+                <p class="story-body-text">
+                  My approach to technology is driven by a deep fascination with how intelligent software can simplify complexity. Rather than viewing code as purely utilitarian, I treat it as an interactive craft — building digital systems that are robust under the hood, visually engaging, and engineered for intuitive human interaction.
+                </p>
+
+                <!-- Core Methodology / Takeaways -->
+                <div class="story-metrics-grid">
+                  <div class="story-metric-box">
+                    <span class="metric-num">01</span>
+                    <div class="metric-info">
+                      <span class="metric-label">CORE METHODOLOGY</span>
+                      <span class="metric-desc">Learn by Experimenting &amp; Creating</span>
+                    </div>
+                  </div>
+                  <div class="story-metric-box">
+                    <span class="metric-num">02</span>
+                    <div class="metric-info">
+                      <span class="metric-label">TECHNICAL TARGET</span>
+                      <span class="metric-desc">Practical AI &amp; Intuitive Web Systems</span>
+                    </div>
+                  </div>
+                  <div class="story-metric-box">
+                    <span class="metric-num">03</span>
+                    <div class="metric-info">
+                      <span class="metric-label">PRIMARY MINDSET</span>
+                      <span class="metric-desc">Beyond Code. Into Intelligence.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- MODULE C: Core Pillars Grid (4 Cards) -->
+          <div class="dash-section-block" data-dash-module="pillars">
+            <div class="dash-block-header">
+              <div class="block-title-group">
+                <span class="block-subtag">DOMAINS OF EXPERTISE // ARCHITECTURE</span>
+                <h3 class="block-title">Core Technical Pillars</h3>
+              </div>
+              <span class="block-badge">4 SPECIALIZATIONS LOADED</span>
+            </div>
+
+            <div class="pillars-grid">
+              <!-- Pillar 1: AI & ML -->
+              <div class="pillar-card card-cyan">
+                <div class="pillar-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+                <span class="pillar-index">PILLAR // 01</span>
+                <h4 class="pillar-title">Artificial Intelligence &amp; Data Systems</h4>
+                <p class="pillar-desc">
+                  Exploring intelligent models, data modeling pipelines, machine learning algorithms, and actionable predictive analytics to solve complex problems.
+                </p>
+                <div class="pillar-tags">
+                  <span>Machine Learning</span>
+                  <span>Data Science</span>
+                  <span>Neural Pipelines</span>
+                  <span>Python</span>
+                </div>
+              </div>
+
+              <!-- Pillar 2: Interactive Web -->
+              <div class="pillar-card card-blue">
+                <div class="pillar-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <span class="pillar-index">PILLAR // 02</span>
+                <h4 class="pillar-title">Interactive Web Architectures</h4>
+                <p class="pillar-desc">
+                  Building next-generation frontend applications, modular component architectures, fluid OS-style micro-interactions, and high-performance interfaces.
+                </p>
+                <div class="pillar-tags">
+                  <span>Modern JavaScript</span>
+                  <span>Component UI</span>
+                  <span>Glassmorphism</span>
+                  <span>Responsive Design</span>
+                </div>
+              </div>
+
+              <!-- Pillar 3: Algorithmic Engineering -->
+              <div class="pillar-card card-violet">
+                <div class="pillar-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <span class="pillar-index">PILLAR // 03</span>
+                <h4 class="pillar-title">Algorithmic Problem Solving</h4>
+                <p class="pillar-desc">
+                  Grounding technical work in fundamental data structures, computational efficiency, clean code architecture, and robust problem-solving logic.
+                </p>
+                <div class="pillar-tags">
+                  <span>Data Structures</span>
+                  <span>Algorithms</span>
+                  <span>System Logic</span>
+                  <span>Optimization</span>
+                </div>
+              </div>
+
+              <!-- Pillar 4: Emerging Tech & Prototyping -->
+              <div class="pillar-card card-teal">
+                <div class="pillar-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </div>
+                <span class="pillar-index">PILLAR // 04</span>
+                <h4 class="pillar-title">Emerging Tech &amp; Rapid Prototyping</h4>
+                <p class="pillar-desc">
+                  Transforming conceptual sparks into concrete prototypes through rapid experimentation, emerging API integration, and creative technology exploration.
+                </p>
+                <div class="pillar-tags">
+                  <span>Rapid Prototyping</span>
+                  <span>API Integration</span>
+                  <span>Experimental UI</span>
+                  <span>Automation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="resize-handle resize-r"></div>
+        <div class="resize-handle resize-b"></div>
+        <div class="resize-handle resize-br"></div>
+      </section>
+
+      <!-- 3. PROJECTS WINDOW (PROJECTS COMMAND CENTRE) -->
+      <section class="os-window" id="win-projects" data-window-id="projects">
+        <div class="window-header">
+          <div class="window-header-left">
+            <svg class="window-icon"><use href="#icon-projects"></use></svg>
+            <div class="window-title-group">
+              <span class="window-title">Projects</span>
+              <span class="window-node-id">NODE_03 // COMMAND_CENTRE</span>
+            </div>
+          </div>
+          <div class="window-controls">
+            <button class="win-btn win-minimize" title="Minimize">
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button class="win-btn win-maximize" title="Maximize">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+            </button>
+            <button class="win-btn win-close" title="Close">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Sub-Navigation & Telemetry Bar -->
+        <div class="window-subnav">
+          <div class="subnav-tabs" role="tablist">
+            <button class="subnav-tab active" data-project-filter="all" role="tab">All Projects</button>
+            <button class="subnav-tab" data-project-filter="featured" role="tab">Featured</button>
+            <button class="subnav-tab" data-project-filter="web" role="tab">Web Systems</button>
+            <button class="subnav-tab" data-project-filter="ai" role="tab">AI &amp; Robotics</button>
+            <button class="subnav-tab" data-project-filter="safety" role="tab">Safety &amp; GeoTech</button>
+          </div>
+          <div class="subnav-status">
+            <span class="cyber-badge status-green"><span class="pulse-dot"></span> DEPLOYED SYSTEMS // 3 NODES</span>
+          </div>
+        </div>
+
+        <div class="window-body">
+          <!-- Section Banner -->
+          <div class="section-header-block projects-header-block">
+            <div class="section-tagline">
+              <span>SYSTEM PROFILE // DISPATCH NODE 03</span>
+              <span class="tagline-dot"></span>
+              <span>PRODUCTION &amp; PROTOTYPES</span>
+            </div>
+            <div class="projects-title-row">
+              <h1 class="section-heading-title"><span class="section-index">03.</span> Featured Projects <span class="projects-sub-title">// Command Centre</span></h1>
+              <div class="projects-meta-badge">
+                <span class="badge-accent">SYS_ID</span>
+                <span>PRJ-NODE-03</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Asymmetric Projects Grid Container -->
+          <div class="projects-grid" id="projects-grid">
+            <!-- Dynamically populated from PROJECTS_DATA -->
+          </div>
+        </div>
+
+        <div class="resize-handle resize-r"></div>
+        <div class="resize-handle resize-b"></div>
+        <div class="resize-handle resize-br"></div>
+      </section>
+
+      <!-- 4. SKILLS WINDOW -->
+      <section class="os-window" id="win-skills" data-window-id="skills">
+        <div class="window-header">
+          <div class="window-header-left">
+            <svg class="window-icon"><use href="#icon-skills"></use></svg>
+            <div class="window-title-group">
+              <span class="window-title">Skills</span>
+              <span class="window-node-id">NODE_04 // CAPABILITY_MATRIX</span>
+            </div>
+          </div>
+          <div class="window-controls">
+            <button class="win-btn win-minimize" title="Minimize">
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button class="win-btn win-maximize" title="Maximize">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+            </button>
+            <button class="win-btn win-close" title="Close">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Sub-Navigation & Telemetry Bar -->
+        <div class="window-subnav">
+          <div class="subnav-tabs" role="tablist" id="skills-filter-tabs">
+            <button class="subnav-tab active" data-skill-filter="all" role="tab" aria-selected="true">All Skills</button>
+            <button class="subnav-tab" data-skill-filter="programming" role="tab" aria-selected="false">Programming Languages</button>
+            <button class="subnav-tab" data-skill-filter="web" role="tab" aria-selected="false">Web Development</button>
+            <button class="subnav-tab" data-skill-filter="tools" role="tab" aria-selected="false">Developer Tools</button>
+            <button class="subnav-tab" data-skill-filter="ai" role="tab" aria-selected="false">AI &amp; Vision</button>
+            <button class="subnav-tab" data-skill-filter="backend" role="tab" aria-selected="false">Data &amp; Backend</button>
+          </div>
+          <div class="subnav-status">
+            <span class="cyber-badge status-green"><span class="pulse-dot"></span> <span class="skills-subnav-status-text">CAPABILITY STACK // 5 MODULES ACTIVE</span></span>
+          </div>
+        </div>
+
+        <div class="window-body">
+          <!-- Section Banner -->
+          <div class="section-header-block skills-header-block">
+            <div class="section-tagline">
+              <span>SYSTEM ARCHITECTURE // DISPATCH NODE 04</span>
+              <span class="tagline-dot"></span>
+              <span>VERIFIED CAPABILITY MATRIX</span>
+            </div>
+            <div class="skills-title-row">
+              <h1 class="section-heading-title"><span class="section-index">04.</span> Technical Skills <span class="skills-sub-title">// Operating System Matrix</span></h1>
+              <div class="skills-meta-badge">
+                <span class="badge-accent">STACK_ID</span>
+                <span>SYS-SKILLS-04</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 Interactive Skill Modules Dashboard Grid -->
+          <div class="skills-dashboard-grid" id="skills-grid">
+
+            <!-- MODULE 1: Programming Languages -->
+            <div class="skill-module-card" data-category="programming">
+              <div class="cyber-bracket top-right"></div>
+              <div class="cyber-bracket bottom-left"></div>
+
+              <div class="module-header">
+                <div class="module-header-left">
+                  <div class="module-icon-wrap" title="Programming Languages">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                  </div>
+                  <div class="module-title-group">
+                    <h3 class="module-title">Programming Languages</h3>
+                    <span class="module-subtitle">Foundational Logic &amp; Object-Oriented Syntax</span>
+                  </div>
+                </div>
+                <div class="module-header-meta">
+                  <span class="module-number-pill">MOD_01</span>
+                </div>
+              </div>
+
+              <div class="module-body">
+                <div class="skill-chips-grid">
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">C</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">C++</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">Python</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">Java</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="module-footer-telemetry">
+                <span>RUNTIME SUBSYSTEM // <span class="tel-count">4 LANGUAGES</span></span>
+                <span class="tel-status"><span class="pulse-dot-small"></span> ACTIVE</span>
+              </div>
+            </div>
+
+            <!-- MODULE 2: Web Development -->
+            <div class="skill-module-card" data-category="web">
+              <div class="cyber-bracket top-right"></div>
+              <div class="cyber-bracket bottom-left"></div>
+
+              <div class="module-header">
+                <div class="module-header-left">
+                  <div class="module-icon-wrap" title="Web Development">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                  </div>
+                  <div class="module-title-group">
+                    <h3 class="module-title">Web Development</h3>
+                    <span class="module-subtitle">Semantic Markup &amp; Interactive Client Interfaces</span>
+                  </div>
+                </div>
+                <div class="module-header-meta">
+                  <span class="module-number-pill">MOD_02</span>
+                </div>
+              </div>
+
+              <div class="module-body">
+                <div class="skill-chips-grid">
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">HTML</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">CSS</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">JavaScript</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="module-footer-telemetry">
+                <span>CLIENT SUBSYSTEM // <span class="tel-count">3 STANDARDS</span></span>
+                <span class="tel-status"><span class="pulse-dot-small"></span> ACTIVE</span>
+              </div>
+            </div>
+
+            <!-- MODULE 3: Developer Tools -->
+            <div class="skill-module-card" data-category="tools">
+              <div class="cyber-bracket top-right"></div>
+              <div class="cyber-bracket bottom-left"></div>
+
+              <div class="module-header">
+                <div class="module-header-left">
+                  <div class="module-icon-wrap" title="Developer Tools">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="6" y1="3" x2="6" y2="15"></line>
+                      <circle cx="18" cy="6" r="3"></circle>
+                      <circle cx="6" cy="18" r="3"></circle>
+                      <path d="M18 9a9 9 0 0 1-9 9"></path>
+                    </svg>
+                  </div>
+                  <div class="module-title-group">
+                    <h3 class="module-title">Developer Tools</h3>
+                    <span class="module-subtitle">Version Control &amp; Integrated Environments</span>
+                  </div>
+                </div>
+                <div class="module-header-meta">
+                  <span class="module-number-pill">MOD_03</span>
+                </div>
+              </div>
+
+              <div class="module-body">
+                <div class="skill-chips-grid">
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">VS Code</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">Git</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">GitHub</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">Code::Blocks</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="module-footer-telemetry">
+                <span>DEV ENVIRONMENT // <span class="tel-count">4 UTILITIES</span></span>
+                <span class="tel-status"><span class="pulse-dot-small"></span> ACTIVE</span>
+              </div>
+            </div>
+
+            <!-- MODULE 4: AI & Vision -->
+            <div class="skill-module-card" data-category="ai">
+              <div class="cyber-bracket top-right"></div>
+              <div class="cyber-bracket bottom-left"></div>
+
+              <div class="module-header">
+                <div class="module-header-left">
+                  <div class="module-icon-wrap" title="AI & Vision">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div class="module-title-group">
+                    <h3 class="module-title">AI &amp; Vision</h3>
+                    <span class="module-subtitle">Computer Vision &amp; Intelligent API Integrations</span>
+                  </div>
+                </div>
+                <div class="module-header-meta">
+                  <span class="module-number-pill">MOD_04</span>
+                </div>
+              </div>
+
+              <div class="module-body">
+                <div class="skill-chips-grid">
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">OpenCV</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">Haar Cascades</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">AI API Integrations</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">Vision Pipelines</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="module-footer-telemetry">
+                <span>INTELLIGENCE ENGINE // <span class="tel-count">4 PIPELINES</span></span>
+                <span class="tel-status"><span class="pulse-dot-small"></span> ACTIVE</span>
+              </div>
+            </div>
+
+            <!-- MODULE 5: Data & Backend -->
+            <div class="skill-module-card" data-category="backend">
+              <div class="cyber-bracket top-right"></div>
+              <div class="cyber-bracket bottom-left"></div>
+
+              <div class="module-header">
+                <div class="module-header-left">
+                  <div class="module-icon-wrap" title="Data & Backend">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    </svg>
+                  </div>
+                  <div class="module-title-group">
+                    <h3 class="module-title">Data &amp; Backend</h3>
+                    <span class="module-subtitle">Document Databases &amp; Cloud Deployment Infrastructures</span>
+                  </div>
+                </div>
+                <div class="module-header-meta">
+                  <span class="module-number-pill">MOD_05</span>
+                </div>
+              </div>
+
+              <div class="module-body">
+                <div class="skill-chips-grid">
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">MongoDB</span>
+                  </div>
+                  <div class="skill-chip">
+                    <span class="chip-bullet"></span>
+                    <span class="chip-text">Vercel</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="module-footer-telemetry">
+                <span>DATA INFRASTRUCTURE // <span class="tel-count">2 SYSTEMS</span></span>
+                <span class="tel-status"><span class="pulse-dot-small"></span> ACTIVE</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="resize-handle resize-r"></div>
+        <div class="resize-handle resize-b"></div>
+        <div class="resize-handle resize-br"></div>
+      </section>
+
+      <!-- 5. EDUCATION WINDOW -->
+      <section class="os-window" id="win-education" data-window-id="education">
+        <div class="window-header">
+          <div class="window-header-left">
+            <svg class="window-icon"><use href="#icon-education"></use></svg>
+            <div class="window-title-group">
+              <span class="window-title">Education</span>
+              <span class="window-node-id">NODE_05 // ACADEMIC_PROFILE.SYS</span>
+            </div>
+          </div>
+          <div class="window-controls">
+            <button class="win-btn win-minimize" title="Minimize">
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button class="win-btn win-maximize" title="Maximize">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+            </button>
+            <button class="win-btn win-close" title="Close">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sub-Navigation & Telemetry Bar -->
+        <div class="window-subnav">
+          <div class="subnav-tabs">
+            <span class="subnav-tab active">Academic Timeline</span>
+          </div>
+          <div class="subnav-status">
+            <span class="cyber-badge status-green"><span class="pulse-dot"></span> ACADEMIC JOURNEY // 3 MILESTONES</span>
+          </div>
+        </div>
+
+        <div class="window-body">
+          <!-- Section Header Block -->
+          <div class="section-header-block education-header-block">
+            <div class="section-tagline">
+              <span>SYSTEM PROFILE // ACADEMIC_PROFILE.SYS</span>
+              <span class="tagline-dot"></span>
+              <span>CHRONOLOGICAL MATRIX</span>
+            </div>
+            <div class="education-title-row">
+              <div class="education-title-group">
+                <h1 class="section-heading-title"><span class="section-index">05.</span> Education</h1>
+                <p class="education-sub-quote">“The journey behind the knowledge.”</p>
+              </div>
+              <div class="education-meta-badge">
+                <span class="badge-accent">SYS_RECORD</span>
+                <span>ACADEMIC_PROFILE.SYS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vertical OS Education Timeline -->
+          <div class="education-timeline-container">
+            <!-- Continuous glowing vertical timeline spine -->
+            <div class="education-timeline-spine" aria-hidden="true"></div>
+
+            <!-- MILESTONE 1 — UNIVERSITY (VISUALLY DOMINANT) -->
+            <div class="timeline-item">
+              <div class="timeline-marker marker-active" title="Currently Pursuing Milestone">
+                <div class="timeline-marker-core"></div>
+              </div>
+
+              <div class="edu-card edu-card-university">
+                <div class="edu-bracket top-right"></div>
+                <div class="edu-bracket bottom-left"></div>
+
+                <div class="edu-card-header">
+                  <div class="edu-card-header-left">
+                    <div class="edu-icon-badge" title="Bachelor of Technology">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                      </svg>
+                    </div>
+                    <div class="edu-heading-group">
+                      <h3 class="edu-card-title">Bachelor of Technology (B.Tech)</h3>
+                      <span class="edu-card-sublabel">UNDERGRADUATE DEGREE // PRIMARY MILESTONE</span>
+                    </div>
+                  </div>
+                  <div class="edu-card-header-right">
+                    <span class="edu-year-badge">2025 – 2029</span>
+                    <span class="status-pursuing-pill">
+                      <span class="pulse-dot-cyan"></span>
+                      <span>CURRENTLY PURSUING</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="edu-card-body">
+                  <!-- Specialisation Callout -->
+                  <div class="edu-specialisation-block">
+                    <span class="edu-spec-label">Specialisation</span>
+                    <span class="edu-spec-value">Artificial Intelligence &amp; Data Science</span>
+                  </div>
+
+                  <!-- Academic Metadata Grid -->
+                  <div class="edu-meta-grid">
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">INSTITUTION</span>
+                      <span class="edu-item-val highlight-text">JECRC University, Jaipur</span>
+                    </div>
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">DEGREE</span>
+                      <span class="edu-item-val">Bachelor of Technology (B.Tech)</span>
+                    </div>
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">START YEAR</span>
+                      <span class="edu-item-val">2025</span>
+                    </div>
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">EXPECTED GRADUATION</span>
+                      <span class="edu-item-val">2029</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="edu-card-footer">
+                  <span class="footer-node">CHRONO_NODE // 01 · ACTIVE_ENROLLMENT</span>
+                  <span class="footer-verified">● VERIFIED ENROLLMENT</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- MILESTONE 2 — CLASS 12 -->
+            <div class="timeline-item">
+              <div class="timeline-marker marker-violet" title="Class 12 Milestone">
+                <div class="timeline-marker-core"></div>
+              </div>
+
+              <div class="edu-card edu-card-school">
+                <div class="edu-bracket top-right"></div>
+                <div class="edu-bracket bottom-left"></div>
+
+                <div class="edu-card-header">
+                  <div class="edu-card-header-left">
+                    <div class="edu-icon-badge" title="Senior Secondary Education">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                      </svg>
+                    </div>
+                    <div class="edu-heading-group">
+                      <h3 class="edu-card-title">Senior Secondary Education (Class 12)</h3>
+                      <span class="edu-card-sublabel">HIGHER SECONDARY // MILESTONE 02</span>
+                    </div>
+                  </div>
+                  <div class="edu-card-header-right">
+                    <span class="edu-year-badge">2025</span>
+                    <span class="status-completed-pill">COMPLETED</span>
+                  </div>
+                </div>
+
+                <div class="edu-card-body">
+                  <div class="edu-meta-grid">
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">SCHOOL</span>
+                      <span class="edu-item-val highlight-text">Jiwrajka International School</span>
+                    </div>
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">AFFILIATION / BOARD</span>
+                      <span class="edu-item-val">Central Board of Secondary Education (CBSE)</span>
+                    </div>
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">LEVEL</span>
+                      <span class="edu-item-val">Senior Secondary (Class 12)</span>
+                    </div>
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">PASSING YEAR</span>
+                      <span class="edu-item-val">2025</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="edu-card-footer">
+                  <span class="footer-node">CHRONO_NODE // 02 · SENIOR_SECONDARY</span>
+                  <span class="footer-verified">● RECORD ARCHIVED</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- MILESTONE 3 — CLASS 10 -->
+            <div class="timeline-item">
+              <div class="timeline-marker marker-violet" title="Class 10 Milestone">
+                <div class="timeline-marker-core"></div>
+              </div>
+
+              <div class="edu-card edu-card-school">
+                <div class="edu-bracket top-right"></div>
+                <div class="edu-bracket bottom-left"></div>
+
+                <div class="edu-card-header">
+                  <div class="edu-card-header-left">
+                    <div class="edu-icon-badge" title="Secondary Education">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 15l2 3-2-1-2 1 2-3"></path>
+                      </svg>
+                    </div>
+                    <div class="edu-heading-group">
+                      <h3 class="edu-card-title">Secondary Education (Class 10)</h3>
+                      <span class="edu-card-sublabel">SECONDARY SCHOOL // MILESTONE 03</span>
+                    </div>
+                  </div>
+                  <div class="edu-card-header-right">
+                    <span class="edu-year-badge">2023</span>
+                    <span class="status-completed-pill">COMPLETED</span>
+                  </div>
+                </div>
+
+                <div class="edu-card-body">
+                  <div class="edu-meta-grid">
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">SCHOOL</span>
+                      <span class="edu-item-val highlight-text">Jiwrajka International School</span>
+                    </div>
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">AFFILIATION / BOARD</span>
+                      <span class="edu-item-val">Central Board of Secondary Education (CBSE)</span>
+                    </div>
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">LEVEL</span>
+                      <span class="edu-item-val">Secondary (Class 10)</span>
+                    </div>
+                    <div class="edu-meta-item">
+                      <span class="edu-item-label">PASSING YEAR</span>
+                      <span class="edu-item-val">2023</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="edu-card-footer">
+                  <span class="footer-node">CHRONO_NODE // 03 · SECONDARY_SCHOOL</span>
+                  <span class="footer-verified">● RECORD ARCHIVED</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="resize-handle resize-r"></div>
+        <div class="resize-handle resize-b"></div>
+        <div class="resize-handle resize-br"></div>
+      </section>
+
+      <!-- 06. CONTACT WINDOW -->
+      <section class="os-window" id="win-contact" data-window-id="contact">
+        <div class="window-header">
+          <div class="window-header-left">
+            <svg class="window-icon"><use href="#icon-contact"></use></svg>
+            <div class="window-title-group">
+              <span class="window-title">Contact</span>
+              <span class="window-node-id">NODE_06</span>
+            </div>
+          </div>
+          <div class="window-controls">
+            <button class="win-btn win-minimize" title="Minimize">
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button class="win-btn win-maximize" title="Maximize">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+            </button>
+            <button class="win-btn win-close" title="Close">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+        <div class="window-subnav">
+          <div class="subnav-tabs">
+            <span class="subnav-tab active">Transmission Console</span>
+          </div>
+          <div class="subnav-status">
+            <span class="cyber-badge status-green"><span class="pulse-dot"></span> STATUS: CHANNELS_OPEN</span>
+          </div>
+        </div>
+        <div class="window-body">
+          <!-- Section Header Block -->
+          <div class="section-header-block contact-header-block">
+            <div class="section-tagline">
+              <span>SYSTEM INTERFACE // COMMUNICATION.SYS</span>
+              <span class="tagline-dot"></span>
+              <span>QUANTUM TRANSCEIVER</span>
+            </div>
+            <div class="contact-title-row">
+              <div class="contact-title-group">
+                <h1 class="section-heading-title"><span class="section-index">06.</span> LET'S CONNECT</h1>
+                <p class="contact-sub-quote">“Have an idea, a project, or an opportunity? Let's connect and build something meaningful.”</p>
+              </div>
+              <div class="contact-header-meta">
+                <div class="comm-status-badge">
+                  <span class="pulse-dot-cyan"></span>
+                  <span>CONNECTION_READY</span>
+                </div>
+                <div class="contact-meta-badge">
+                  <span class="badge-accent">TRANSCEIVER</span>
+                  <span>COMM_PORT_06</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Command Center 2-Column Grid -->
+          <div class="contact-command-center">
+
+            <!-- LEFT PANEL: Direct Channels & Information -->
+            <div class="comm-panel comm-info-panel">
+              <div class="comm-bracket top-right"></div>
+              <div class="comm-bracket bottom-left"></div>
+
+              <div class="comm-panel-header">
+                <div class="comm-panel-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                  <span>DIRECT CHANNELS</span>
+                </div>
+                <span class="comm-panel-meta">SECURE_NODE</span>
+              </div>
+
+              <div class="comm-panel-body">
+                <!-- Introductory Narrative Card -->
+                <div class="contact-intro-card">
+                  <h3 class="contact-intro-title">Start a Conversation</h3>
+                  <p class="contact-intro-text">
+                    Whether you are looking to collaborate on cutting-edge software, discuss machine learning pipelines, or explore new opportunities, my inbox is always open.
+                  </p>
+                </div>
+
+                <!-- Verified Channels List -->
+                <div class="direct-channels-list">
+                  <!-- Email Channel -->
+                  <div class="channel-card channel-email">
+                    <div class="channel-card-left">
+                      <div class="channel-icon-wrap" title="Direct Email">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                          <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                      </div>
+                      <div class="channel-info">
+                        <span class="channel-type">PRIMARY EMAIL</span>
+                        <a href="mailto:suyash4284@gmail.com" class="channel-val" title="Click to compose direct email">suyash4284@gmail.com</a>
+                      </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      <a href="mailto:suyash4284@gmail.com" class="channel-action-chip" title="Send email via mail client">
+                        <span>MAIL</span>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                      </a>
+                      <button type="button" class="channel-copy-btn" id="contact-copy-email-btn" title="Copy email address to clipboard" aria-label="Copy email address">
+                        <span id="contact-copy-chip" class="channel-action-chip">COPY</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- GitHub Channel -->
+                  <a href="https://github.com/Suyash6858" target="_blank" rel="noopener noreferrer" class="channel-card channel-github" title="Visit GitHub Profile (opens in new tab)">
+                    <div class="channel-card-left">
+                      <div class="channel-icon-wrap" title="GitHub Profile">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                      </div>
+                      <div class="channel-info">
+                        <span class="channel-type">CODE REPOSITORY</span>
+                        <span class="channel-val">github.com/Suyash6858</span>
+                      </div>
+                    </div>
+                    <span class="channel-action-chip">
+                      <span>VISIT</span>
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </span>
+                  </a>
+
+                  <!-- LinkedIn Channel -->
+                  <a href="https://www.linkedin.com/in/suyash-agrawal-9474aa373/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="channel-card channel-linkedin" title="Visit LinkedIn Profile (opens in new tab)">
+                    <div class="channel-card-left">
+                      <div class="channel-icon-wrap" title="LinkedIn Profile">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                          <rect x="2" y="9" width="4" height="12"></rect>
+                          <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                      </div>
+                      <div class="channel-info">
+                        <span class="channel-type">PROFESSIONAL NETWORK</span>
+                        <span class="channel-val">linkedin.com/in/suyash-agrawal</span>
+                      </div>
+                    </div>
+                    <span class="channel-action-chip">
+                      <span>CONNECT</span>
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </span>
+                  </a>
+                </div>
+
+                <!-- Transmission Protocol Callout -->
+                <div class="comm-protocol-callout">
+                  <div class="comm-protocol-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                  </div>
+                  <div class="comm-protocol-text">
+                    Direct channel routing ensures messages reach my primary inbox without third-party tracking or intermediaries.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- RIGHT PANEL: Message Form Console -->
+            <div class="comm-panel comm-form-panel">
+              <div class="comm-bracket top-right"></div>
+              <div class="comm-bracket bottom-left"></div>
+
+              <div class="comm-panel-header">
+                <div class="comm-panel-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                  <span>MESSAGE CONSOLE</span>
+                </div>
+                <span class="comm-panel-meta">DISPATCH_TERMINAL</span>
+              </div>
+
+              <div class="comm-panel-body">
+                <form id="contact-form" class="contact-form" novalidate>
+                  
+                  <!-- Form Row: Name & Email -->
+                  <div class="form-row-2col">
+                    <div class="form-field-group">
+                      <label for="contact-name" class="form-label">
+                        <span>YOUR NAME</span>
+                        <span class="label-req">*</span>
+                      </label>
+                      <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Alex Morgan" autocomplete="name" required>
+                    </div>
+
+                    <div class="form-field-group">
+                      <label for="contact-email" class="form-label">
+                        <span>YOUR EMAIL</span>
+                        <span class="label-req">*</span>
+                      </label>
+                      <input type="email" id="contact-email" name="email" class="form-input" placeholder="e.g. alex@example.com" autocomplete="email" required>
+                    </div>
+                  </div>
+
+                  <!-- Form Row: Subject -->
+                  <div class="form-field-group">
+                    <label for="contact-subject" class="form-label">
+                      <span>SUBJECT</span>
+                      <span class="label-req">*</span>
+                    </label>
+                    <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="e.g. Project Collaboration / Software Opportunity" required>
+                  </div>
+
+                  <!-- Form Row: Message -->
+                  <div class="form-field-group">
+                    <label for="contact-message" class="form-label">
+                      <span>MESSAGE CONTENT</span>
+                      <span class="label-req">*</span>
+                    </label>
+                    <textarea id="contact-message" name="message" class="form-textarea" placeholder="Describe your proposal, questions, or ideas..." rows="4" required></textarea>
+                  </div>
+
+                  <!-- Validation Error Box -->
+                  <div id="contact-error-box" class="form-alert-box" role="alert" aria-live="polite">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                      <line x1="12" y1="9" x2="12" y2="13"></line>
+                      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <span id="contact-error-text">Please check the required fields.</span>
+                  </div>
+
+                  <!-- Dispatch Protocol Status Notice -->
+                  <div id="contact-status-box" class="form-dispatch-notice" role="status" aria-live="polite">
+                    <div class="dispatch-notice-title">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>DISPATCH PROTOCOL INITIATED</span>
+                    </div>
+                    <p class="dispatch-notice-text">
+                      Opening your default email client with this pre-composed message. If your client did not launch, please send directly to <a href="mailto:suyash4284@gmail.com" class="dispatch-notice-link">suyash4284@gmail.com</a>.
+                    </p>
+                  </div>
+
+                  <!-- Submit Action -->
+                  <button type="submit" id="contact-submit-btn" class="contact-submit-btn">
+                    <span>SEND MESSAGE</span>
+                    <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </button>
+
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Contact Section Footer Strip -->
+          <div class="contact-footer-strip">
+            <p class="contact-footer-quote">“Open to collaboration, creative ideas, and exciting projects.”</p>
+            <span class="contact-footer-meta">NEXUS_DISPATCH // SECURE_COMM_CHANNEL_06</span>
+          </div>
+
+        </div>
+        <div class="resize-handle resize-r"></div>
+        <div class="resize-handle resize-b"></div>
+        <div class="resize-handle resize-br"></div>
+      </section>
+
+    </main>
+
+    <!-- --------------------------------------------------------------------
+         FLOATING BOTTOM DOCK
+         -------------------------------------------------------------------- -->
+    <div id="dock-container">
+      <nav id="dock" aria-label="System Dock">
+        <div class="dock-item" data-window-id="home" role="button" tabindex="0">
+          <svg class="dock-icon"><use href="#icon-home"></use></svg>
+          <span class="dock-tooltip">01 // Home</span>
+          <span class="dock-active-dot"></span>
+        </div>
+
+        <div class="dock-item" data-window-id="about" role="button" tabindex="0">
+          <svg class="dock-icon"><use href="#icon-about"></use></svg>
+          <span class="dock-tooltip">02 // About Me</span>
+          <span class="dock-active-dot"></span>
+        </div>
+
+        <div class="dock-item" data-window-id="projects" role="button" tabindex="0">
+          <svg class="dock-icon"><use href="#icon-projects"></use></svg>
+          <span class="dock-tooltip">03 // Projects</span>
+          <span class="dock-active-dot"></span>
+        </div>
+
+        <div class="dock-item" data-window-id="skills" role="button" tabindex="0">
+          <svg class="dock-icon"><use href="#icon-skills"></use></svg>
+          <span class="dock-tooltip">04 // Skills</span>
+          <span class="dock-active-dot"></span>
+        </div>
+
+        <div class="dock-item" data-window-id="education" role="button" tabindex="0">
+          <svg class="dock-icon"><use href="#icon-education"></use></svg>
+          <span class="dock-tooltip">05 // Education</span>
+          <span class="dock-active-dot"></span>
+        </div>
+
+        <div class="dock-separator"></div>
+
+        <div class="dock-item" data-window-id="contact" role="button" tabindex="0">
+          <svg class="dock-icon"><use href="#icon-contact"></use></svg>
+          <span class="dock-tooltip">06 // Contact</span>
+          <span class="dock-active-dot"></span>
+        </div>
+      </nav>
+    </div>
+
+    <!-- --------------------------------------------------------------------
+         RIGHT-CLICK DESKTOP CONTEXT MENU
+         -------------------------------------------------------------------- -->
+    <div id="context-menu" role="menu">
+      <div class="context-item" data-context-action="palette">
+        <div class="context-item-left">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span>Command Palette</span>
+        </div>
+        <span class="context-shortcut">Ctrl+K</span>
+      </div>
+      <div class="context-item" data-context-action="home">
+        <div class="context-item-left">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Return to Home</span>
+        </div>
+      </div>
+      <div class="context-divider"></div>
+      <div class="context-item" data-context-action="tile">
+        <div class="context-item-left">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Tile Windows</span>
+        </div>
+      </div>
+      <div class="context-item" data-context-action="cascade">
+        <div class="context-item-left">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span>Cascade Windows</span>
+        </div>
+      </div>
+      <div class="context-item" data-context-action="minimize-all">
+        <div class="context-item-left">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span>Minimize All</span>
+        </div>
+      </div>
+      <div class="context-divider"></div>
+      <div class="context-item" data-context-action="toggle-sound">
+        <div class="context-item-left">
+          <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon></svg>
+          <span>Toggle Sound FX</span>
+        </div>
+      </div>
+      <div class="context-item" data-context-action="toggle-grid">
+        <div class="context-item-left">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="3" x2="21" y2="21"></line><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+          <span>Toggle Cyber Grid</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- --------------------------------------------------------------------
+         EXPANDABLE PROJECT DETAILS MODAL OVERLAY
+         -------------------------------------------------------------------- -->
+    <div id="project-modal-overlay" role="dialog" aria-modal="true" aria-label="Expanded Project Details" aria-hidden="true">
+      <div class="project-modal-shell">
+        <div class="project-modal-header">
+          <div class="modal-header-left">
+            <svg class="modal-header-icon"><use href="#icon-projects"></use></svg>
+            <span class="modal-header-title">Project Mission Specification</span>
+            <span class="modal-header-node">DISPATCH // EXPANDED_NODE</span>
+          </div>
+          <button type="button" class="modal-close-btn" id="project-modal-close" title="Close Specification (Esc)" aria-label="Close Project Modal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="project-modal-body" id="project-modal-body">
+          <!-- Dynamically populated by ProjectsController -->
+        </div>
+      </div>
+    </div>
+
+    <!-- --------------------------------------------------------------------
+         COMMAND PALETTE MODAL OVERLAY (CTRL+K / CMD+K)
+         -------------------------------------------------------------------- -->
+    <div id="palette-overlay" role="dialog" aria-modal="true" aria-label="Command Palette">
+      <div id="command-palette">
+        <div class="palette-search-wrapper">
+          <svg class="palette-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="palette-input" class="palette-input" placeholder="Type a section name or command..." autocomplete="off" spellcheck="false">
+          <span class="palette-kbd-hint">ESC TO EXIT</span>
+        </div>
+        <div class="palette-results" id="palette-results">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="palette-footer">
+          <div class="palette-shortcuts">
+            <span class="shortcut-pair"><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+            <span class="shortcut-pair"><kbd>↵</kbd> Select</span>
+            <span class="shortcut-pair"><kbd>Esc</kbd> Close</span>
+          </div>
+          <span>NEXUS KERNEL DISPATCH</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/audio.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/window-manager.js"></script>
+  <script src="js/dock.js"></script>
+  <script src="js/command-palette.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/projects-data.js"></script>
+  <script src="js/projects-controller.js"></script>
+  <script src="js/skills-controller.js"></script>
+  <script src="js/contact-controller.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
